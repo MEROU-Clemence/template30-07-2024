@@ -1,3 +1,19 @@
+/*Variables*/
+:root {
+    --color-link: #DC6C4E;
+    --color-btn: #DC6C4E;
+    --color-btn-txt: #FFFFFF;
+    --color-text: #131313;
+    --color-text-white: #FFFFFF;
+    --color-title: #2C2A29;
+    --color-bg-1: #F7F7F7;
+    --color-bg-2: #FFFFFF;
+    --color-bg-3: #2C2A29;
+    --color-red: #912305;
+    --font-title: Poppins;
+    --font-text: Poppins;
+}
+
 /****** FOR ALL ******/
 * {
     box-sizing: border-box;
