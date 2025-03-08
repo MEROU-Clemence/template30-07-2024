@@ -1,0 +1,165 @@
+<!DOCTYPE html>
+<html lang="{{CurrentLang.IsoLang}}" culture="{{CurrentLang.CultureLang}}">
+<head>
+    <title>{{ResourcesTemplate.SpecialOffers}} - {{CustomTitle}} - {{City}} - {{Country}}</title>
+    <meta name="description" content="{{MetaDescriptionSpecialOffers}}">
+    {{>CommonMetaTags}}
+    <link rel="canonical" href="{{UrlSpecialOffers}}" />
+    <meta property="og:url" content="{{UrlSpecialOffers}}" />
+    <meta property="og:title" content="{{ResourcesTemplate.SpecialOffers}}" />
+    <meta property="og:image" content="{{#Photos.0}}{{UrlMedias}}/crop-300x200/{{IdMedia}}/{{FileNamePhoto}}{{/Photos.0}}" />
+    <meta property="og:description" content="{{MetaDescriptionSpecialOffers}}" />
+    {{>FaviconTags}}
+    {{>CommonStylesheets}}
+    {{#HasBookingActivated}}{{>ScriptCalendarClick}}{{/HasBookingActivated}}
+</head>
+<body>
+    {{{ScriptAnalytics}}}
+    {{{GoogleTagManagerBody}}}
+    {{>Header}}
+
+    <main>
+        <!-- SECTION BANNER/WIDGET BE -->
+        <section class="section-title-BG bg-img" style="background-image: url({{#Photos.0}}{{UrlMedias}}/crop-1600x1200/{{IdMedia}}/{{FileNamePhoto}}{{/Photos.0}});" alt="{{NamePhoto}}">
+            <div class="opacity">
+                <div class="home-global-indications content-section">
+                    <div class="principal-title-contain">
+                        <div class="principal-title">
+                            <h1>{{ResourcesTemplate.SpecialOffers}}</h1>
+                        </div>
+                    </div>
+
+                    <div class="bloc-reservation-contain">
+                        <div class="bloc-reservation bloc-reservation-home">
+                            {{#HasBookingActivated}}
+                            <div id="section-BE" class="section-BE-home">
+                                <div class="check-availability content-section">
+                                    <div class="rounded-box">
+                                        {{>Widget-BE}}
+                                        {{>Widget-BE-secure}}
+                                    </div>
+                                </div>
+                            </div>
+                            {{/HasBookingActivated}}
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- SECTION OFFRES SPECIALES -->
+        {{#HasSpecialOffers}}
+        <section class="section section-offers-specials">
+            <div class="content-section">
+
+                <div class="section-title title-margin">
+                    <h2>{{ResourcesTemplate.SpecialOffers}}</h2>
+                </div>
+
+                <div class="offers-specials-big-contain">
+                    {{#SpecialOffers}}
+                    <div class="offer-special-contain">
+                        {{#FirstPhotoSpecialOffer}}
+                        <img class="bg-img" src="{{UrlMedias}}/crop-1200x500/{{IdMedia}}/{{FileNamePhoto}}" alt="{{NamePhoto}}" itemprop="image">
+                        {{/FirstPhotoSpecialOffer}}
+                        {{^FirstPhotoSpecialOffer}}https://static.elloha.com/webgen/img/special-offer.png{{/FirstPhotoSpecialOffer}}
+
+                        <div class="infos-speciales-offers">
+                            <div class="title-and-promo">
+                                <h4>{{TitleSpecialOffer}}</h4>
+                                {{#AmountPromo}}
+                                <div class="offer-promo">{{SignPromo}}{{AmountPromo}}{{UnitPromo}}</div>
+                                {{/AmountPromo}}
+                            </div>
+
+                            <div class="descrip-dates-button">
+                                {{#DescriptionPrestaLength150}}
+                                <p class="description-special-offer">{{DescriptionPrestaLength150}}</p>
+                                {{/DescriptionPrestaLength150}}
+
+                                <div class="offer-dates">
+                                    {{^IsEarlyBirdOrLastMinute}}
+                                    {{#DateFromSpecialOfferString}}
+                                    <div class="date-os">{{ResourcesTemplate.DateFrom}} <strong>{{DateFromSpecialOfferString}}</strong></div>
+                                    <div class="date-os">{{ResourcesTemplate.DateTo}} </div>
+                                    {{/DateFromSpecialOfferString}}
+
+                                    {{^DateFromSpecialOfferString}}
+                                    {{#DateToSpecialOfferString}}
+                                    <div class="date-os">{{ResourcesTemplate.DateUntil}} </div>
+                                    {{/DateToSpecialOfferString}}
+                                    {{/DateFromSpecialOfferString}}
+
+                                    {{#DateToSpecialOfferString}}
+                                    <div class="date-os"><strong>{{DateToSpecialOfferString}}</strong></div>
+                                    {{/DateToSpecialOfferString}}
+
+                                    <div class="date-os">{{DeadlineStringSpecialOffer}}</div>
+                                    {{/IsEarlyBirdOrLastMinute}}
+
+                                    {{#LastMinute}}
+                                    <div class="date-os"><strong>{{ResourcesTemplate.RightNow}}</strong></div>
+                                    {{/LastMinute}}
+                                    {{#EarlyBird}}
+                                    <div class="date-os"><strong>{{ResourcesTemplate.BookEarly}}</strong></div>
+                                    {{/EarlyBird}}
+                                    {{#MinStayStringSpecialOffer}}
+                                    <div>{{MinStayStringSpecialOffer}}</div>
+                                    {{/MinStayStringSpecialOffer}}
+                                </div>
+
+                                {{#HasBookingActivated}}
+                                <a class="btn-default btn-special-offer" href="{{{UrlBECustom}}}/Search/Index/{{IdPubBe}}?idoi={{IdOi}}&idModelOffer={{IdSpecialOffer}}&culture={{CurrentLang.CultureLang}}&searchFirstAvailableDates=1&template={{UrlTemplateBE}}">
+                                    {{ResourcesTemplate.pageMenuTitle_online-reservation}}
+                                </a>
+                                {{/HasBookingActivated}}
+                            </div>
+                        </div>
+                    </div>
+                    {{/SpecialOffers}}
+                </div>
+            </div>
+        </section>
+        {{/HasSpecialOffers}}
+
+        <!-- SECTION CALENDAR -->
+        {{#HasCalendarActivated}}
+        <section class="dispos section">
+            <div class="content-section">
+                <div class="section-title title-margin">
+                    <h2>{{ResourcesTemplate.AvailabilityTitle}}</h2>
+                </div>
+
+                <div class="calendars">
+                    <div class="avail-calendar-w">
+                        <div class="calendar-container">
+                            <div id="datepicker1"></div>
+                        </div>
+                    </div>
+                    <div class="calendar_status">
+                        <div>
+                            <div class="green-dispo">-</div>
+                            <span>{{ResourcesTemplate.Available}}</span>
+                        </div>
+                        <div>
+                            <div class="red-no-dispo">-</div>
+                            <span class="not-available">{{ResourcesTemplate.NotAvailable}}</span>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+        {{/HasCalendarActivated}}
+
+        <!-- SECTION BTN-BACK -->
+        <div class="section btn-back-mobile">
+            <a href="javascript:" id="scroll-to-top2" class="btn-default btn-special-offer back-mobile">{{ResourcesTemplate.ReturnToTop}}</a>
+        </div>
+    </main>
+
+    {{>Footer}}
+    {{>CommonScripts}}
+    
+</body>
+
+</html>

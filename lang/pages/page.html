@@ -1,0 +1,111 @@
+<!DOCTYPE html>
+<html lang="{{CurrentLang.IsoLang}}" culture="{{CurrentLang.CultureLang}}">
+<head>
+    <title>{{CurrentPage.TitlePage}} - {{CustomTitle}} - {{City}} - {{Country}}</title>
+    <meta name="description" content="{{CurrentPage.TextPageWithoutHtmlLength150}}">
+    {{>CommonMetaTags}}
+    <link rel="canonical" href="{{UrlPageTemplate}}" />
+    <meta property="og:url" content="{{UrlPageTemplate}}" />
+    <meta property="og:title" content="{{CurrentPage.TitlePage}}" />
+    <meta property="og:image" content="{{#CurrentPage.PhotosPage.0}}{{UrlMedias}}/crop-300x200/{{IdMedia}}/{{FileNamePhoto}}{{/CurrentPage.PhotosPage.0}}{{^CurrentPage.PhotosPage.0}}{{#Photos.0}}{{UrlMedias}}/crop-300x200/{{IdMedia}}/{{FileNamePhoto}}{{/Photos.0}}{{/CurrentPage.PhotosPage.0}}" />
+    <meta property="og:description" content="{{CurrentPage.TextPageLength150}}" />
+    {{>FaviconTags}}
+    {{>CommonStylesheets}}
+</head>
+<body>
+    {{{ScriptAnalytics}}}
+    {{{GoogleTagManagerBody}}}
+    {{>Header}}
+
+    <main>
+        <!-- SECTION BANNER/WIDGET BE -->
+        <section class="section-title-BG bg-img" style="background-image: url({{#CurrentPage.PhotosPage.0}}{{UrlMedias}}/crop-1600x1200/{{IdMedia}}/{{FileNamePhoto}}{{/CurrentPage.PhotosPage.0}}{{^CurrentPage.PhotosPage.0}}{{#Photos.0}}{{UrlMedias}}/crop-1600x400/{{IdMedia}}/{{FileNamePhoto}}{{/Photos.0}}{{/CurrentPage.PhotosPage.0}});" alt="{{NamePhoto}}">
+            <div class="opacity">
+                <div class="home-global-indications content-section">
+                    <div class="principal-title-contain">
+                        <div class="principal-title">
+                            <h1>{{CurrentPage.TitlePage}}</h1>
+                        </div>
+                    </div>
+
+                    <div class="bloc-reservation-contain">
+                        <div class="bloc-reservation bloc-reservation-home">
+                            {{#HasBookingActivated}}
+                            <div id="section-BE" class="section-BE-home">
+                                <div class="check-availability content-section">
+                                    <div class="rounded-box">
+                                        {{>Widget-BE}}
+                                        {{>Widget-BE-secure}}
+                                    </div>
+                                </div>
+                            </div>
+                            {{/HasBookingActivated}}
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- SECTION NEWS -->
+        <div class="news-others-pages-contain">
+            <div class="content-section">
+                {{#Pages}}
+                <a href="{{UrlPageTemplate}}">
+                    <div class="news-others-pages">
+                        <h4>{{TitlePage}}</h4>
+                    </div>
+                </a>
+                {{/Pages}}
+            </div>
+        </div>
+
+        <div class="section section-news-in-news">
+            <div class="content-news">
+                <div class="content-left">
+                    <div class="list-news content-section">
+                        {{#CurrentPage.PhotosPage.1}}
+                        <div class="carousel-wrapper">
+                            <div class="owl-wrapper">
+                                <div class="owl-carousel owl-theme slider-page-news">
+                                    {{#CurrentPage.PhotosPage}}
+                                    <div class="photo-page">
+                                        <img class="bg-img" src="{{UrlMedias}}/crop-750x560/{{IdMedia}}/{{FileNamePhoto}}" alt="{{NamePhoto}}">
+                                        {{#NamePhoto}}<p class="legend">{{NamePhoto}}</p>{{/NamePhoto}}
+                                    </div>
+                                    {{/CurrentPage.PhotosPage}}
+                                </div>
+                            </div>
+                        </div>
+                        {{/CurrentPage.PhotosPage.1}}
+                        {{^CurrentPage.PhotosPage.1}}
+                        {{#CurrentPage.PhotosPage}}
+                        <div class="photo-page-contain">
+                            <div class="photo-page">
+                                <img class="bg-img" src="{{UrlMedias}}/crop-750x560/{{IdMedia}}/{{FileNamePhoto}}" alt="{{NamePhoto}}">
+                                {{#NamePhoto}}<p class="legend">{{NamePhoto}}</p>{{/NamePhoto}}
+                            </div>
+                        </div>
+                        {{/CurrentPage.PhotosPage}}
+                        {{/CurrentPage.PhotosPage.1}}
+                        <div class="description-page">{{{CurrentPage.TextPage}}}</div>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <!-- SECTION NEWSLETTER -->
+        {{#HasNewsletterActivated}}
+        {{>Newsletter}}
+        {{/HasNewsletterActivated}}
+
+        <!-- SECTION BTN-BACK -->
+        <div class="section btn-back-mobile">
+            <a href="javascript:" id="scroll-to-top2" class="btn-default btn-special-offer back-mobile">{{ResourcesTemplate.ReturnToTop}}</a>
+        </div>
+    </main>
+
+    {{>Footer}}
+    {{>CommonScripts}}
+    
+</body>
+</html>

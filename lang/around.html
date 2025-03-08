@@ -1,0 +1,107 @@
+<!DOCTYPE html>
+<html lang="{{CurrentLang.IsoLang}}" culture="{{CurrentLang.CultureLang}}">
+<head>
+    <title>{{ResourcesTemplate.Around}} - {{CustomTitle}} - {{City}} - {{Country}}</title>
+    <meta name="description" content="{{SubtitleAround}}">
+    {{>CommonMetaTags}}
+    <link rel="canonical" href="{{UrlAround}}" />
+    <meta property="og:url" content="{{UrlAround}}" />
+    <meta property="og:title" content="{{ResourcesTemplate.Around}}" />
+    <meta property="og:image" content="{{#Photos.0}}{{UrlMedias}}/crop-300x200/{{IdMedia}}/{{FileNamePhoto}}{{/Photos.0}}" />
+    <meta property="og:description" content="{{SubtitleAround}}" />
+    {{>FaviconTags}}
+    {{>CommonStylesheets}}
+</head>
+<body>
+    {{{ScriptAnalytics}}}
+    {{{GoogleTagManagerBody}}}
+    {{>Header}}
+    <main>
+        <!-- SECTION BANNER/WIDGET BE -->
+        <section class="section-title-BG bg-img" style="background-image: url(https://static.elloha.com/webgen/img/around.jpg)" alt="{{NamePhoto}}">
+            <div class="opacity">
+                <div class="home-global-indications content-section">
+                    <div class="principal-title-contain">
+                        <div class="principal-title">
+                            <h1>{{ResourcesTemplate.pageMenuTitle_around}}</h1>
+                        </div>
+                    </div>
+
+                    <div class="bloc-reservation-contain">
+                        <div class="bloc-reservation bloc-reservation-home">
+                            {{#HasBookingActivated}}
+                            <div id="section-BE" class="section-BE-home">
+                                <div class="check-availability content-section">
+                                    <div class="rounded-box">
+                                        {{>Widget-BE}}
+                                        {{>Widget-BE-secure}}
+                                    </div>
+                                </div>
+                            </div>
+                            {{/HasBookingActivated}}
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <div class="section around-items-w">
+            <div class="content-section grid">
+                {{#OisAssocied}}
+                <div class="grid-item col-xs-12 col-sm-6 col-md-4" data-id-type="{{IdTypeOiAssocied}}" data-type-label="{{TypeOiAssocied}}" data-lat="{{XOiAssocied}}" data-lng="{{YOiAssocied}}">
+                    <div class="around-item-w">
+                        <div class="around-item-img-w" style="background-image: url({{#PhotoOiAssocied}}{{UrlMedias}}/crop-1200x900/{{IdMedia}}/{{FileNamePhoto}}{{/PhotoOiAssocied}});" alt="{{NamePhoto}}">
+                            <div class="around-item-type">{{TypeOiAssocied}}</div>
+                        </div>
+                        <div class="around-item-content-w">
+                            <h4 class="around-title" data-name>{{TitleOiAssocied}}</h4>
+                            {{#DistanceOiAssocied}}
+                            <div class="around-distance">
+                                <i class="las la-map-marker"></i> {{ResourcesTemplate.At}} {{DistanceOiAssocied}} {{ResourcesTemplate.Km}} {{ResourcesTemplate.FromOurPlace}}
+                            </div>
+                            {{/DistanceOiAssocied}}
+                            <div class="text-description">{{DescriptionOiAssocied}}</div>
+                            <div class="more-less-btn link-to-see see-all">{{ResourcesTemplate.ReadMore}}</div>
+                            <div class="more-less-btn link-to-see see-menos hidden">{{ResourcesTemplate.ShowLess}}</div>
+                        </div>
+                        <div class="comment-item-w">
+                            <div class="comment-item-w-top">
+                                <div class="comment-title">{{ResourcesTemplate.WhyWeRecommand}}</div>
+                            </div>
+                            <div class="icon-to-see icon-all"><i class="las la-plus-circle"></i></div>
+                            <div class="icon-to-see icon-menos hidden"><i class="las la-minus-circle"></i></div>
+                            <div class="text-opinion d-none">{{TextOpinion}}</div>
+                        </div>
+                    </div>
+                </div>
+                {{/OisAssocied}}
+            </div>
+        </div>
+
+        <!-- SECTION MAP -->
+        <section class="section section-map">
+            <div class="content-section">
+                <div class="section-title">
+                    <h2>{{ResourcesTemplate.WhereAreWe}}</h2>
+                </div>
+
+                <div id="applemapkit" class="fullwidth-mapkit" data-lat="{{X}}" data-lng="{{Y}}" data-string="{{CustomTitle}}, {{AddressLine}}, {{PostalCode}}, {{City}}, {{Country}}.">
+                    <div id="mapApple"></div>
+                </div>
+
+                <div class="address-line"><i class="las la-map-marker"></i> {{CustomTitle}}, {{PostalCode}} {{City}}</div>
+
+                <div class="btn-contain">
+                    <div data-action="external-map" class="external-map btn-default btn-special-offer">
+                        {{ResourcesTemplate.ToCome}}
+                    </div>
+                </div>
+            </div>
+        </section>
+    </main>
+
+    {{>Footer}}
+    {{>CommonScripts}}
+    
+</body>
+</html>
